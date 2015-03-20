@@ -59,6 +59,8 @@ void MainGame::initSystems() {
     
     // Turn on double buffering
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    // Set VSync off
+    SDL_GL_SetSwapInterval(0);
     
     glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
     
