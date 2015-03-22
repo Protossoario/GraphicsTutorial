@@ -14,12 +14,13 @@
 #include <vector>
 #include <glm.hpp>
 #include "Errors.h"
-#include "Sprite.h"
 #include "GLSLProgram.h"
 #include "Window.h"
 #include "Camera2D.h"
 #include "SpriteBatch.h"
 #include "ResourceManager.h"
+#include "InputManager.h"
+#include "Timing.h"
 
 enum class GameState { PLAY, EXIT };
 
@@ -48,9 +49,11 @@ private:
     
     SpriteBatch _spriteBatch;
     
+    InputManager _inputManager;
+    FPSLimiter _fpsLimiter;
+    
     float _fps;
     float _maxFPS;
-    float _frameTime;
     
     float _time;
 };

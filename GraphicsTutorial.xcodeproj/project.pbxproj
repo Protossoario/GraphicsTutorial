@@ -15,6 +15,8 @@
 		3065A0AB1ABE155F00E77DF9 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0A91ABE155F00E77DF9 /* Window.cpp */; };
 		3065A0B01ABE43C400E77DF9 /* Camera2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0AE1ABE43C400E77DF9 /* Camera2D.cpp */; };
 		3065A0B41ABE562600E77DF9 /* SpriteBatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0B21ABE562600E77DF9 /* SpriteBatch.cpp */; };
+		3065A0B81ABE79EC00E77DF9 /* InputManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0B61ABE79EC00E77DF9 /* InputManager.cpp */; };
+		3065A0BC1ABE7E6800E77DF9 /* Timing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0BB1ABE7E6800E77DF9 /* Timing.cpp */; };
 		30D6B47A1AB920DE00010504 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30D6B4781AB920DD00010504 /* ResourceManager.cpp */; };
 		30D6B47E1AB920FB00010504 /* TextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30D6B47C1AB920FB00010504 /* TextureCache.cpp */; };
 		30ED1E661AA3B7FA000E5B6D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30ED1E651AA3B7FA000E5B6D /* main.cpp */; };
@@ -57,6 +59,10 @@
 		3065A0AF1ABE43C400E77DF9 /* Camera2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera2D.h; sourceTree = "<group>"; };
 		3065A0B21ABE562600E77DF9 /* SpriteBatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteBatch.cpp; sourceTree = "<group>"; };
 		3065A0B31ABE562600E77DF9 /* SpriteBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpriteBatch.h; sourceTree = "<group>"; };
+		3065A0B61ABE79EC00E77DF9 /* InputManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputManager.cpp; sourceTree = "<group>"; };
+		3065A0B71ABE79EC00E77DF9 /* InputManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputManager.h; sourceTree = "<group>"; };
+		3065A0BA1ABE7E4F00E77DF9 /* Timing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Timing.h; sourceTree = "<group>"; };
+		3065A0BB1ABE7E6800E77DF9 /* Timing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Timing.cpp; sourceTree = "<group>"; };
 		30D6B4781AB920DD00010504 /* ResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceManager.cpp; sourceTree = "<group>"; };
 		30D6B4791AB920DE00010504 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
 		30D6B47C1AB920FB00010504 /* TextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureCache.cpp; sourceTree = "<group>"; };
@@ -158,6 +164,24 @@
 			name = SpriteBatch;
 			sourceTree = "<group>";
 		};
+		3065A0B91ABE79F200E77DF9 /* InputManager */ = {
+			isa = PBXGroup;
+			children = (
+				3065A0B61ABE79EC00E77DF9 /* InputManager.cpp */,
+				3065A0B71ABE79EC00E77DF9 /* InputManager.h */,
+			);
+			name = InputManager;
+			sourceTree = "<group>";
+		};
+		3065A0BD1ABE7E6E00E77DF9 /* Timing */ = {
+			isa = PBXGroup;
+			children = (
+				3065A0BA1ABE7E4F00E77DF9 /* Timing.h */,
+				3065A0BB1ABE7E6800E77DF9 /* Timing.cpp */,
+			);
+			name = Timing;
+			sourceTree = "<group>";
+		};
 		30D6B47B1AB920E200010504 /* ResourceManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +239,8 @@
 				3065A0AC1ABE1EF200E77DF9 /* Window */,
 				3065A0B11ABE43DE00E77DF9 /* Camera2D */,
 				3065A0B51ABE5B5600E77DF9 /* SpriteBatch */,
+				3065A0B91ABE79F200E77DF9 /* InputManager */,
+				3065A0BD1ABE7E6E00E77DF9 /* Timing */,
 			);
 			path = GraphicsTutorial;
 			sourceTree = "<group>";
@@ -295,6 +321,7 @@
 			files = (
 				3065A0B01ABE43C400E77DF9 /* Camera2D.cpp in Sources */,
 				3065A0AB1ABE155F00E77DF9 /* Window.cpp in Sources */,
+				3065A0BC1ABE7E6800E77DF9 /* Timing.cpp in Sources */,
 				30D6B47E1AB920FB00010504 /* TextureCache.cpp in Sources */,
 				30ED1E6E1AA3BAA6000E5B6D /* MainGame.cpp in Sources */,
 				30ED1E661AA3B7FA000E5B6D /* main.cpp in Sources */,
@@ -305,6 +332,7 @@
 				302247C81AA3CF600026112B /* Sprite.cpp in Sources */,
 				3065A0B41ABE562600E77DF9 /* SpriteBatch.cpp in Sources */,
 				300825101AB69B8D007D26A9 /* IOManager.cpp in Sources */,
+				3065A0B81ABE79EC00E77DF9 /* InputManager.cpp in Sources */,
 				30D6B47A1AB920DE00010504 /* ResourceManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
