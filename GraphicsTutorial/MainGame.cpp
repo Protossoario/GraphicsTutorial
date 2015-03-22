@@ -63,6 +63,16 @@ void MainGame::gameLoop() {
         
         _camera.update();
         
+        for (int i = 0; i < _bullets.size();) {
+            if (_bullets[i].update()) {
+                _bullets[i] = _bullets.back();
+                _bullets.pop_back();
+            }
+            else {
+                i++;
+            }
+        }
+        
         drawGame();
         
         _fps = _fpsLimiter.end();
@@ -131,6 +141,12 @@ void MainGame::processInput() {
         glm::vec2 mouseCoords = _inputManager.getMouseCoords();
         mouseCoords = _camera.convertScreenToWorld(mouseCoords);
         printf("X: %.0f, Y: %.0f\n", mouseCoords.x, mouseCoords.y);
+        
+        glm::vec2 playerPos(0.0f, 0.0f);
+        glm::vec2 direction = mouseCoords - playerPos;
+        direction = glm::normalize(direction);
+        
+        _bullets.emplace_back(playerPos, direction, 1.0f, 1000);
     }
 }
 
@@ -159,6 +175,10 @@ void MainGame::drawGame() {
     color.b = 255;
     color.a = 255;
     _spriteBatch.draw(pos, uv, texture.textureId, 0.0f, color);
+    
+    for (int i = 0; i < _bullets.size(); i++) {
+        _bullets[i].draw(_spriteBatch);
+    }
     
     _spriteBatch.end();
     

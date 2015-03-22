@@ -21,6 +21,7 @@
 #include "ResourceManager.h"
 #include "InputManager.h"
 #include "Timing.h"
+#include "Bullet.h"
 
 enum class GameState { PLAY, EXIT };
 
@@ -51,6 +52,8 @@ private:
     
     InputManager _inputManager;
     FPSLimiter _fpsLimiter;
+    
+    std::vector<Bullet> _bullets;
     
     float _fps;
     float _maxFPS;
