@@ -8,7 +8,9 @@
 
 #include "MainGame.h"
 
-MainGame::MainGame() : _screenWidth(500), _screenHeight(500), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f) {}
+MainGame::MainGame() : _screenWidth(500), _screenHeight(500), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f) {
+    _camera.init(_screenWidth, _screenHeight);
+}
 
 MainGame::~MainGame() {}
 
@@ -16,13 +18,13 @@ void MainGame::run() {
     initSystems();
     
     _sprites.push_back(new Sprite());
-    _sprites.back()->init(-1.0f, -1.0f, 1.0f, 1.0f, "/Users/EduardoS/Documents/Programacion/XCode Projects/GraphicsTutorial/GraphicsTutorial/Textures/CharacterRight_Standing.png");
+    _sprites.back()->init(0.0f, 0.0f, _screenWidth / 2, _screenHeight / 2, "/Users/EduardoS/Documents/Programacion/XCode Projects/GraphicsTutorial/GraphicsTutorial/Textures/CharacterRight_Standing.png");
     
     _sprites.push_back(new Sprite());
-    _sprites.back()->init(0.0f, -1.0f, 1.0f, 1.0f, "/Users/EduardoS/Documents/Programacion/XCode Projects/GraphicsTutorial/GraphicsTutorial/Textures/CharacterRight_Standing.png");
+    _sprites.back()->init(_screenWidth / 2, 0.0f, _screenWidth / 2, _screenHeight / 2, "/Users/EduardoS/Documents/Programacion/XCode Projects/GraphicsTutorial/GraphicsTutorial/Textures/CharacterRight_Standing.png");
     
     _sprites.push_back(new Sprite());
-    _sprites.back()->init(-1.0f, 0.0f, 1.0f, 1.0f, "/Users/EduardoS/Documents/Programacion/XCode Projects/GraphicsTutorial/GraphicsTutorial/Textures/CharacterRight_Standing.png");
+    _sprites.back()->init(0.0f, _screenHeight / 2, _screenWidth / 2, _screenHeight / 2, "/Users/EduardoS/Documents/Programacion/XCode Projects/GraphicsTutorial/GraphicsTutorial/Textures/CharacterRight_Standing.png");
     
     gameLoop();
 }
@@ -68,7 +70,10 @@ void MainGame::gameLoop() {
         float startTicks = SDL_GetTicks();
         
         processInput();
+        
         _time += 0.05;
+        _camera.update();
+        
         drawGame();
         calculateFPS();
         
@@ -87,6 +92,9 @@ void MainGame::gameLoop() {
 }
 
 void MainGame::processInput() {
+    const float CAMERA_SPEED = 20.0f;
+    const float SCALE_SPEED = 0.01f;
+    
     SDL_Event ev;
     while (SDL_PollEvent(&ev)) {
         switch (ev.type) {
@@ -97,6 +105,36 @@ void MainGame::processInput() {
             case SDL_MOUSEMOTION:
                 printf("x: %d y: %d\n", ev.motion.x, ev.motion.y);
                 break;
+                
+            case SDL_KEYDOWN:
+                switch (ev.key.keysym.sym) {
+                    case SDLK_w:
+                        _camera.setPosition(_camera.getPosition() + glm::vec2(0.0f, CAMERA_SPEED));
+                        break;
+                        
+                    case SDLK_a:
+                        _camera.setPosition(_camera.getPosition() + glm::vec2(-CAMERA_SPEED, 0.0f));
+                        break;
+                        
+                    case SDLK_s:
+                        _camera.setPosition(_camera.getPosition() + glm::vec2(0.0, -CAMERA_SPEED));
+                        break;
+                        
+                    case SDLK_d:
+                        _camera.setPosition(_camera.getPosition() + glm::vec2(CAMERA_SPEED, 0.0f));
+                        break;
+                        
+                    case SDLK_q:
+                        _camera.setScale(_camera.getScale() + SCALE_SPEED);
+                        break;
+                        
+                    case SDLK_e:
+                        _camera.setScale(_camera.getScale() - SCALE_SPEED);
+                        break;
+                        
+                    default:
+                        break;
+                }
         }
     }
 }
@@ -113,6 +151,10 @@ void MainGame::drawGame() {
     
     GLint timeLocation = _colorProgram.getUniformLocation("time");
     glUniform1f(timeLocation, _time);
+    
+    GLint pLocation = _colorProgram.getUniformLocation("P");
+    glm::mat4 cameraMatrix = _camera.getCameraMatrix();
+    glUniformMatrix4fv(pLocation, 1, GL_FALSE, &(cameraMatrix[0][0]));
     
     for (int i = 0; i < _sprites.size(); i++) {
         _sprites[i]->draw();

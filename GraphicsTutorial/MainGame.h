@@ -12,10 +12,12 @@
 #include <SDL2/SDL.h>
 #include <OpenGL/gl3.h>
 #include <vector>
+#include <glm.hpp>
 #include "Errors.h"
 #include "Sprite.h"
 #include "GLSLProgram.h"
 #include "Window.h"
+#include "Camera2D.h"
 
 enum class GameState { PLAY, EXIT };
 
@@ -43,6 +45,7 @@ private:
     Sprite _sprite;
     
     GLSLProgram _colorProgram;
+    Camera2D _camera;
     
     float _fps;
     float _maxFPS;
