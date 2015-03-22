@@ -18,6 +18,8 @@
 #include "GLSLProgram.h"
 #include "Window.h"
 #include "Camera2D.h"
+#include "SpriteBatch.h"
+#include "ResourceManager.h"
 
 enum class GameState { PLAY, EXIT };
 
@@ -40,12 +42,11 @@ private:
     int _screenWidth;
     int _screenHeight;
     GameState _gameState;
-    
-    std::vector<Sprite*> _sprites;
-    Sprite _sprite;
-    
+        
     GLSLProgram _colorProgram;
     Camera2D _camera;
+    
+    SpriteBatch _spriteBatch;
     
     float _fps;
     float _maxFPS;
