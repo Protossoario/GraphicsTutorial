@@ -12,6 +12,8 @@
 		302247C81AA3CF600026112B /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302247C61AA3CF600026112B /* Sprite.cpp */; };
 		302247CC1AA3D97E0026112B /* GLSLProgram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302247CA1AA3D97E0026112B /* GLSLProgram.cpp */; };
 		302247D01AA3DB100026112B /* Errors.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 302247CE1AA3DB100026112B /* Errors.cpp */; };
+		3065A0AB1ABE155F00E77DF9 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0A91ABE155F00E77DF9 /* Window.cpp */; };
+		3065A0B01ABE43C400E77DF9 /* Camera2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3065A0AE1ABE43C400E77DF9 /* Camera2D.cpp */; };
 		30D6B47A1AB920DE00010504 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30D6B4781AB920DD00010504 /* ResourceManager.cpp */; };
 		30D6B47E1AB920FB00010504 /* TextureCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30D6B47C1AB920FB00010504 /* TextureCache.cpp */; };
 		30ED1E661AA3B7FA000E5B6D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30ED1E651AA3B7FA000E5B6D /* main.cpp */; };
@@ -47,6 +49,11 @@
 		302247CF1AA3DB100026112B /* Errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Errors.h; sourceTree = "<group>"; };
 		303A08041AA4C1F400732161 /* Shaders */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Shaders; sourceTree = "<group>"; };
 		303BA39A1AB7E1A7003CE2DA /* Textures */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Textures; sourceTree = "<group>"; };
+		3065A0A91ABE155F00E77DF9 /* Window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		3065A0AA1ABE155F00E77DF9 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		3065A0AD1ABE423100E77DF9 /* glm */ = {isa = PBXFileReference; lastKnownFileType = folder; name = glm; path = ../../QuimiPop/QuimiPop/glm; sourceTree = "<group>"; };
+		3065A0AE1ABE43C400E77DF9 /* Camera2D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera2D.cpp; sourceTree = "<group>"; };
+		3065A0AF1ABE43C400E77DF9 /* Camera2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Camera2D.h; sourceTree = "<group>"; };
 		30D6B4781AB920DD00010504 /* ResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceManager.cpp; sourceTree = "<group>"; };
 		30D6B4791AB920DE00010504 /* ResourceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceManager.h; sourceTree = "<group>"; };
 		30D6B47C1AB920FB00010504 /* TextureCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureCache.cpp; sourceTree = "<group>"; };
@@ -121,6 +128,24 @@
 			name = Errors;
 			sourceTree = "<group>";
 		};
+		3065A0AC1ABE1EF200E77DF9 /* Window */ = {
+			isa = PBXGroup;
+			children = (
+				3065A0A91ABE155F00E77DF9 /* Window.cpp */,
+				3065A0AA1ABE155F00E77DF9 /* Window.h */,
+			);
+			name = Window;
+			sourceTree = "<group>";
+		};
+		3065A0B11ABE43DE00E77DF9 /* Camera2D */ = {
+			isa = PBXGroup;
+			children = (
+				3065A0AE1ABE43C400E77DF9 /* Camera2D.cpp */,
+				3065A0AF1ABE43C400E77DF9 /* Camera2D.h */,
+			);
+			name = Camera2D;
+			sourceTree = "<group>";
+		};
 		30D6B47B1AB920E200010504 /* ResourceManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +188,7 @@
 				303BA39A1AB7E1A7003CE2DA /* Textures */,
 				303A08041AA4C1F400732161 /* Shaders */,
 				30ED1E651AA3B7FA000E5B6D /* main.cpp */,
+				3065A0AD1ABE423100E77DF9 /* glm */,
 				302247C51AA3CF4E0026112B /* MainGame */,
 				302247C91AA3CF660026112B /* Sprite */,
 				30F2770A1AB7DB0300319810 /* GLTexture.h */,
@@ -174,6 +200,8 @@
 				30F2770E1AB7DB7B00319810 /* ImageLoader */,
 				30D6B47B1AB920E200010504 /* ResourceManager */,
 				30D6B47F1AB9210200010504 /* TextureCache */,
+				3065A0AC1ABE1EF200E77DF9 /* Window */,
+				3065A0B11ABE43DE00E77DF9 /* Camera2D */,
 			);
 			path = GraphicsTutorial;
 			sourceTree = "<group>";
@@ -252,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3065A0B01ABE43C400E77DF9 /* Camera2D.cpp in Sources */,
+				3065A0AB1ABE155F00E77DF9 /* Window.cpp in Sources */,
 				30D6B47E1AB920FB00010504 /* TextureCache.cpp in Sources */,
 				30ED1E6E1AA3BAA6000E5B6D /* MainGame.cpp in Sources */,
 				30ED1E661AA3B7FA000E5B6D /* main.cpp in Sources */,
@@ -349,6 +379,11 @@
 					/Library/Frameworks,
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/../QuimiPop/QuimiPop/glm\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -359,6 +394,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks,
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"\"$(SRCROOT)/../QuimiPop/QuimiPop/glm\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

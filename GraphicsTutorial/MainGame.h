@@ -10,12 +10,12 @@
 #define __GraphicsTutorial__MainGame__
 
 #include <SDL2/SDL.h>
-#include <OpenGL/glu.h>
 #include <OpenGL/gl3.h>
 #include <vector>
 #include "Errors.h"
 #include "Sprite.h"
 #include "GLSLProgram.h"
+#include "Window.h"
 
 enum class GameState { PLAY, EXIT };
 
@@ -34,7 +34,7 @@ private:
     void drawGame();
     void calculateFPS();
     
-    SDL_Window* _window;
+    Window _window;
     int _screenWidth;
     int _screenHeight;
     GameState _gameState;

@@ -8,7 +8,7 @@
 
 #include "MainGame.h"
 
-MainGame::MainGame() : _window(nullptr), _screenWidth(500), _screenHeight(500), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f) {}
+MainGame::MainGame() : _screenWidth(500), _screenHeight(500), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f) {}
 
 MainGame::~MainGame() {}
 
@@ -34,35 +34,23 @@ void MainGame::initSystems() {
     // Required for Mac OS X to support GLSL version 130 or higher
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
     
-    _window = SDL_CreateWindow("Game Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_OPENGL);
+    // Turn on double buffering
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    // Set VSync off
+    SDL_GL_SetSwapInterval(0);
     
-    if (_window == nullptr) {
-        fatalError("SDL Window could not be created!");
-    }
-    
-    SDL_GLContext glContext = SDL_GL_CreateContext(_window);
-    if (glContext == nullptr) {
-        fatalError("SDL GL Context could not be created!");
-    }
+    _window.create("Game Engine", _screenWidth, _screenHeight, 0);
     
     // Required for Mac OS X
     GLuint vertexArrayID;
     glGenVertexArrays(1, &vertexArrayID);
     if (vertexArrayID == 0) {
-        printf("%s\n", gluErrorString(glGetError()));
         fatalError("Could not generate Vertex Array Object!");
     }
     glBindVertexArray(vertexArrayID);
     
     printf("OpenGL version %s\n", glGetString(GL_VERSION));
     printf("GLSL version %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
-    
-    // Turn on double buffering
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    // Set VSync off
-    SDL_GL_SetSwapInterval(0);
-    
-    glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
     
     initShaders();
 }
@@ -134,7 +122,7 @@ void MainGame::drawGame() {
     
     _colorProgram.unuse();
     
-    SDL_GL_SwapWindow(_window);
+    _window.swapBuffer();
 }
 
 void MainGame::calculateFPS() {
