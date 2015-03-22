@@ -40,6 +40,14 @@ int Window::create(std::string windowName, int screenWidth, int screenHeight, un
     
     glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
     
+    // Turn on double buffering
+    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+    // Set VSync off
+    SDL_GL_SetSwapInterval(0);
+    // Enabled alpha blending
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
     return 0;
 }
 

@@ -8,7 +8,7 @@
 
 #include "MainGame.h"
 
-MainGame::MainGame() : _screenWidth(500), _screenHeight(500), _gameState(GameState::PLAY), _time(0), _maxFPS(60.0f) {
+MainGame::MainGame() : _screenWidth(500), _screenHeight(500), _gameState(GameState::PLAY), _maxFPS(60.0f) {
     _camera.init(_screenWidth, _screenHeight);
 }
 
@@ -26,11 +26,6 @@ void MainGame::initSystems() {
     
     // Required for Mac OS X to support GLSL version 130 or higher
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-    
-    // Turn on double buffering
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-    // Set VSync off
-    SDL_GL_SetSwapInterval(0);
     
     _window.create("Game Engine", _screenWidth, _screenHeight, 0);
     
@@ -66,7 +61,6 @@ void MainGame::gameLoop() {
         
         processInput();
         
-        _time += 0.05;
         _camera.update();
         
         drawGame();
@@ -136,9 +130,6 @@ void MainGame::drawGame() {
     glActiveTexture(GL_TEXTURE0);
     GLint textureLocation = _colorProgram.getUniformLocation("mySampler");
     glUniform1i(textureLocation, 0);
-    
-    GLint timeLocation = _colorProgram.getUniformLocation("time");
-    glUniform1f(timeLocation, _time);
     
     GLint pLocation = _colorProgram.getUniformLocation("P");
     glm::mat4 cameraMatrix = _camera.getCameraMatrix();
