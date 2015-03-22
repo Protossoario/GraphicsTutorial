@@ -8,6 +8,8 @@
 
 #include "InputManager.h"
 
+InputManager::InputManager() : _mouseCoords(0.0f, 0.0f) {}
+
 void InputManager::pressKey(unsigned int keyID) {
     _keyMap[keyID] = true;
 }
@@ -22,4 +24,9 @@ bool InputManager::isKeyPressed(unsigned int keyID) {
         return _keyMap[keyID];
     }
     return false;
+}
+
+void InputManager::setMouseCoords(float x, float y) {
+    _mouseCoords.x = x;
+    _mouseCoords.y = y;
 }
